@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.app {
+  height: 100vh;
+  background-color: #f0f3ff;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline:none;
+  font-size: 15px;
+  padding: 8px;
+  background: transparent;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
+}
+
+.search-bar button {
+  background-color: #e5e7eb;
+  color: #6b7280;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.user-header {
+  display: flex;
+  align-items: left;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+.user-info {
+  display: flex;
+  flex-direction: row;
+}
+.user-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 40px;
+  gap: 6px;
+  color: #111827;
+}
+.user-info h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.user-info a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 4px 0 0;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stats span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.stats strong {
+  font-size: 18px;
+  color: #111827;
+}
+
+.user-card p,
+.user-card > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #374151;
+  margin: 8px 0 0;
+  text-decoration: none;
+}
+
+.user-card > a {
+  color: #3b82f6;
+}
+
