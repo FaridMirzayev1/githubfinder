@@ -16,10 +16,12 @@ const fetchUser = async (username: string) => {
     const data = await fetchGithubUser(username);
     setUser(data);
     setError(null);
-  } catch (err) {
+  } 
+  catch (err) {
     setUser(null);
     setError(err instanceof Error ? err.message : String(err));
-  } finally {
+  } 
+  finally {
     setLoading(false);
   }
 };

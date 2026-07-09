@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eslint</title>
+    <title>GitHub Finder</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // Redirect from 404.html to index.html with preserved path
+      (function(){
+        var l = window.location;
+        if (l.pathname.indexOf('/githubfinder/') !== 0) {
+          sessionStorage.redirect = l.pathname + l.search + l.hash;
+          l.pathname = '/githubfinder/';
+        }
+      })();
+    </script>
   </head>
   <body>
-    <div id="root">hello world</div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

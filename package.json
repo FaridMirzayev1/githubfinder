@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://FaridMirzayev1.github.io/githubfinder",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "homepage": "https://username.github.io/githubfinder"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.2.7",
