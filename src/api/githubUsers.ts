@@ -3,7 +3,6 @@ import type { GitHubRepo, GitHubUser } from "../types/github";
 const GITHUB_API = "https://api.github.com/users";
 
 const githubHeaders = {
-  Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
   Accept: "application/vnd.github+json",
 };
 
