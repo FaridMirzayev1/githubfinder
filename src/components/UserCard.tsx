@@ -28,8 +28,10 @@ export default function UserCard({ user }: UserCardProps) {
       </div>
       <div className="stats">
         <div>
-          <span>Repos</span>
-          <strong>{user.public_repos}</strong>
+          <button className="repos-button" onClick={() => window.open(`https://github.com/${user.login}?tab=repositories`)}>
+            <span>Repository</span>
+            <strong>{user.public_repos}</strong>
+          </button>
         </div>
         <div>
           <span>Followers</span>

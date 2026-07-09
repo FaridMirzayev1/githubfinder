@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import UserCard from "./components/UserCard";
 import type { GitHubUser } from "./types/github";
+import { fetchUser as fetchGithubUser } from "./api/githubUsers";
 import "./App.css";
 
 export default function App() {
@@ -12,18 +13,7 @@ const fetchUser = async (username: string) => {
   setLoading(true);
   setError(null);
   try {
-    const res = await fetch(`https://api.github.com/users/${username}`, {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      },
-    });
-    console.log(res); 
-    if (!res.ok) {
-      throw new Error("İstifadəçi tapılmadı");
-    }
-
-    const data: GitHubUser = await res.json();
-    console.log(data);
+    const data = await fetchGithubUser(username);
     setUser(data);
     setError(null);
   } catch (err) {
