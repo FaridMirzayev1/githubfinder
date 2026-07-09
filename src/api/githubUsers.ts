@@ -1,6 +1,11 @@
-import type { GitHubUser } from "../types/github";
+import type { GitHubRepo, GitHubUser } from "../types/github";
 
 const GITHUB_API = "https://api.github.com/users";
+
+const githubHeaders = {
+  Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+  Accept: "application/vnd.github+json",
+};
 
 export async function fetchUser(username: string): Promise<GitHubUser> {
   if (!username) {
@@ -8,9 +13,7 @@ export async function fetchUser(username: string): Promise<GitHubUser> {
   }
 
   const res = await fetch(`${GITHUB_API}/${encodeURIComponent(username)}`, {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-    },
+    headers: githubHeaders,
   });
 
   if (!res.ok) {
@@ -18,4 +21,16 @@ export async function fetchUser(username: string): Promise<GitHubUser> {
   }
   const data = await res.json();
   return data as GitHubUser;
+}
+
+export async function fetchUserRepos(reposUrl: string): Promise<GitHubRepo[]> {
+  const res = await fetch(reposUrl, {
+    headers: githubHeaders,
+  });
+
+  if (!res.ok) {
+    throw new Error("Repositorylər yüklənmədi");
+  }
+
+  return (await res.json()) as GitHubRepo[];
 }

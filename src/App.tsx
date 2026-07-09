@@ -3,7 +3,7 @@ import SearchBar from "./components/SearchBar";
 import UserCard from "./components/UserCard";
 import type { GitHubUser } from "./types/github";
 import { fetchUser as fetchGithubUser } from "./api/githubUsers";
-import "./App.css";
+import "./App.css"
 
 export default function App() {
   const [user, setUser] = useState<GitHubUser | null>(null);
