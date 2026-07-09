@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GitHub Finder</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // Capture the path and redirect to index.html
+      (function(){
+        var pathname = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        
+        // Store the full path in sessionStorage
+        sessionStorage.redirect = pathname + search + hash;
+        
+        // Redirect to /githubfinder/
+        if (pathname !== '/githubfinder/' && pathname !== '/githubfinder/index.html') {
+          window.location.href = '/githubfinder/';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
