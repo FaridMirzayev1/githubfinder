@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchUserRepos } from "../api/githubUsers";
 import type { GitHubRepo, GitHubUser } from "../types/github";
 
@@ -9,9 +9,17 @@ interface UserCardProps {
 export default function UserCard({ user }: UserCardProps) {
   const [showRepos, setShowRepos] = useState(false);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const [repoLoading, setRepoLoading] = useState(false);
+  const [repoLoading, setRepoLoading] = useState(true);
   const [repoError, setRepoError] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("All");
+
+  useEffect(() => {
+    setShowRepos(false);
+    setRepos([]);
+    setRepoLoading(false);
+    setRepoError(null);
+    setSelectedLanguage("All");
+  }, [user.login]);
 
   const joinedDate = new Date(user.created_at).toLocaleDateString("en-US", {
     year: "numeric",
@@ -21,9 +29,12 @@ export default function UserCard({ user }: UserCardProps) {
 
   const languages = useMemo(() => {
     const uniqueLanguages = Array.from(
-      new Set(repos.map((repo) => repo.language).filter((lang): lang is string => Boolean(lang)))
+      new Set(
+        repos
+          .map((repo) => repo.language)
+          .filter((lang): lang is string => Boolean(lang)),
+      ),
     ).sort();
-
     return uniqueLanguages;
   }, [repos]);
 
@@ -33,7 +44,7 @@ export default function UserCard({ user }: UserCardProps) {
     }
 
     return repos.filter(
-      (repo) => repo.language?.toLowerCase() === selectedLanguage.toLowerCase()
+      (repo) => repo.language?.toLowerCase() === selectedLanguage.toLowerCase(),
     );
   }, [repos, selectedLanguage]);
 
@@ -47,7 +58,6 @@ export default function UserCard({ user }: UserCardProps) {
       setShowRepos(true);
       return;
     }
-
     setRepoLoading(true);
     setRepoError(null);
 
@@ -56,7 +66,9 @@ export default function UserCard({ user }: UserCardProps) {
       setRepos(loadedRepos);
       setShowRepos(true);
     } catch (error) {
-      setRepoError(error instanceof Error ? error.message : "Repositorylər yüklənmədi");
+      setRepoError(
+        error instanceof Error ? error.message : "Repositorylər yüklənmədi",
+      );
     } finally {
       setRepoLoading(false);
     }
@@ -125,12 +137,16 @@ export default function UserCard({ user }: UserCardProps) {
                         {repo.name}
                       </a>
                       {repo.description && <p>{repo.description}</p>}
-                      {repo.language && <span className="repo-language">{repo.language}</span>}
+                      {repo.language && (
+                        <span className="repo-language">{repo.language}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="repo-status">No repositories found for this language.</p>
+                <p className="repo-status">
+                  No repositories found for this language.
+                </p>
               )}
             </>
           )}
