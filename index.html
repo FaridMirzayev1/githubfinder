@@ -5,18 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Finder</title>
-    <script type="text/javascript">
-      // Restore the original path from sessionStorage after redirect
-      (function(){
-        var redirect = sessionStorage.redirect;
-        if (redirect) {
-          delete sessionStorage.redirect;
-          if (redirect !== window.location.pathname + window.location.search + window.location.hash) {
-            history.replaceState(null, null, redirect);
-          }
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
