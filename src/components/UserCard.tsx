@@ -13,7 +13,7 @@ export default function UserCard({ user }: UserCardProps) {
   const [repoError, setRepoError] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("All");
 
-  useEffect(() => {
+  useEffect (() => {
     setShowRepos(false);
     setRepos([]);
     setRepoLoading(false);
